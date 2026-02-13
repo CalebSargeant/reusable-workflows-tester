@@ -6,6 +6,9 @@ name: Build Container Image on Release
 on:
   release:
     types: [published]
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       version:
@@ -21,10 +24,11 @@ permissions:
   contents: read
   packages: write
   id-token: write
+  pull-requests: read
 
 jobs:
   build:
-    uses: calebsargeant/reusable-workflows/.github/workflows/docker-bake-ghcr.yaml@v1.0.26
+    uses: calebsargeant/reusable-workflows/.github/workflows/docker-bake-ghcr.yaml@v1.0.27
     with:
       image_name: backend
       platforms: linux/amd64
