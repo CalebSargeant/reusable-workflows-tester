@@ -10,7 +10,7 @@ variable "REGISTRY" {
 }
 
 variable "IMAGE_NAME" {
-  default = "calebsargeant/reusable-workflows-tester"
+  default = "calebsargeant/backend"
 }
 
 group "default" {
