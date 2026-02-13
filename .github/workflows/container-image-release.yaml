@@ -21,11 +21,10 @@ permissions:
   contents: read
   packages: write
   id-token: write
-  pull-requests: read
 
 jobs:
   build:
-    uses: calebsargeant/reusable-workflows/.github/workflows/docker-bake-ghcr.yaml@v1.0.25
+    uses: calebsargeant/reusable-workflows/.github/workflows/docker-bake-ghcr.yaml@v1.0.26
     with:
       image_name: backend
       platforms: linux/amd64
