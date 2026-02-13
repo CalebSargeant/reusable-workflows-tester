@@ -32,8 +32,8 @@ target "backend" {
   }
 }
 
-target "test-container-dev" {
-  inherits = ["test-container"]
+target "backend-dev" {
+  inherits = ["backend"]
   tags = [
     "${REGISTRY}/${IMAGE_NAME}:dev"
   ]
