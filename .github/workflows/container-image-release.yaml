@@ -6,6 +6,9 @@ name: Build Container Image on Release
 on:
   release:
     types: [published]
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       version:
@@ -21,6 +24,7 @@ permissions:
   contents: read
   packages: write
   id-token: write
+  pull-requests: read
 
 jobs:
   build:
