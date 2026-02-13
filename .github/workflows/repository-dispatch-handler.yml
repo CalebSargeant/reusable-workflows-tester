@@ -1,0 +1,34 @@
+name: Repository Dispatch Handler
+
+on:
+  repository_dispatch:
+    types: [run-ci-tests, test-reusable-workflow]
+
+jobs:
+  log-dispatch:
+    name: Log Dispatch Event
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log event details
+        run: |
+          echo "Repository dispatch event received!"
+          echo "Event Type: ${{ github.event.action }}"
+          echo "Sender: ${{ github.event.sender.login }}"
+          
+          echo "Client Payload:"
+          echo '${{ toJson(github.event.client_payload) }}' | jq .
+      
+      - name: Trigger test workflow
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ref = context.payload.client_payload.ref || 'main';
+            const runNumber = context.payload.client_payload.run_number || 'unknown';
+            const prNumber = context.payload.client_payload.pr_number || 'N/A';
+            
+            console.log(`Triggering tests for ref: ${ref}`);
+            console.log(`Source PR: ${prNumber}`);
+            console.log(`Source run number: ${runNumber}`);
+            
+            // The test-container.yml workflow will automatically run
+            // due to the repository_dispatch trigger
