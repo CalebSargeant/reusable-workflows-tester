@@ -28,7 +28,7 @@ permissions:
 
 jobs:
   build:
-    uses: calebsargeant/reusable-workflows/.github/workflows/docker-bake-ghcr.yaml@v1.0.26
+    uses: calebsargeant/reusable-workflows/.github/workflows/docker-bake-ghcr.yaml@v1.0.27
     with:
       image_name: backend
       platforms: linux/amd64
