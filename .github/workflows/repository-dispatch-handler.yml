@@ -4,6 +4,9 @@ on:
   repository_dispatch:
     types: [run-ci-tests, test-reusable-workflow]
 
+permissions:
+  contents: read
+
 jobs:
   log-dispatch:
     name: Log Dispatch Event

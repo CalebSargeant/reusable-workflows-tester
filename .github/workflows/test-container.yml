@@ -17,6 +17,9 @@ on:
         required: false
         default: ''
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: Lint Code
