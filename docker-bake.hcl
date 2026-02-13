@@ -14,7 +14,7 @@ variable "IMAGE_NAME" {
 }
 
 group "default" {
-  targets = ["test-container"]
+  targets = ["backend"]
 }
 
 target "test-container" {
