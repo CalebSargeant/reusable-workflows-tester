@@ -17,7 +17,7 @@ group "default" {
   targets = ["backend"]
 }
 
-target "test-container" {
+target "backend" {
   context = "."
   dockerfile = "Dockerfile"
   tags = [
