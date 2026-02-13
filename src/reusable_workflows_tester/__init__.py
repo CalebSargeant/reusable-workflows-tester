@@ -3,7 +3,7 @@
 
 def hello_world() -> str:
     """Return a hello world greeting.
-    
+
     Returns:
         str: A greeting message
     """
@@ -12,11 +12,11 @@ def hello_world() -> str:
 
 def add_numbers(a: int, b: int) -> int:
     """Add two numbers together.
-    
+
     Args:
         a: First number
         b: Second number
-        
+
     Returns:
         int: Sum of a and b
     """
@@ -25,10 +25,10 @@ def add_numbers(a: int, b: int) -> int:
 
 def is_even(n: int) -> bool:
     """Check if a number is even.
-    
+
     Args:
         n: Number to check
-        
+
     Returns:
         bool: True if n is even, False otherwise
     """
