@@ -14,10 +14,10 @@ variable "IMAGE_NAME" {
 }
 
 group "default" {
-  targets = ["test-container"]
+  targets = ["backend"]
 }
 
-target "test-container" {
+target "backend" {
   context = "."
   dockerfile = "Dockerfile"
   tags = [
