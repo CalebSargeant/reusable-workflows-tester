@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.2 (2026-02-13)
+
+### Chores
+
+- Bump reusable workflows to v1.0.26
+  ([`5165053`](https://github.com/CalebSargeant/reusable-workflows-tester/commit/5165053cb38db28b24060fd18004c9bbbebead69))
+
+
 ## v1.0.1 (2026-02-13)
 
 ### Bug Fixes
