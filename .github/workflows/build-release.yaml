@@ -26,6 +26,16 @@ on:
           - patch
           - minor
           - major
+      prerelease:
+        description: 'Create a pre-release'
+        required: false
+        default: false
+        type: boolean
+      prerelease_token:
+        description: 'Pre-release identifier (e.g., alpha, beta, rc)'
+        required: false
+        default: 'rc'
+        type: string
 
 permissions:
   contents: write
@@ -33,12 +43,32 @@ permissions:
   id-token: write
 
 jobs:
+  validate:
+    name: Validate Branch Rules
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate prerelease setting matches branch
+        run: |
+          if [ "${{ github.ref_name }}" = "staging" ] && [ "${{ fromJSON(github.event.inputs.prerelease) }}" != "true" ]; then
+            echo "❌ Error: staging branch must create pre-releases"
+            exit 1
+          fi
+          if [ "${{ github.ref_name }}" = "main" ] && [ "${{ fromJSON(github.event.inputs.prerelease) }}" = "true" ]; then
+            echo "❌ Error: main branch cannot create pre-releases"
+            exit 1
+          fi
+
   # Run semantic release
   semantic-release:
     name: Semantic Release
+    needs: [validate]
+    if: always() && (needs.validate.result == 'success' || needs.validate.result == 'skipped')
     uses: calebsargeant/reusable-workflows/.github/workflows/semantic-release.yaml@v1.0.28
     with:
       bump: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.bump || '' }}
+      prerelease: ${{ github.event_name == 'workflow_dispatch' && fromJSON(github.event.inputs.prerelease || 'false') || false }}
+      prerelease_token: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.prerelease_token || 'rc' }}
       working_directory: '.'
     secrets:
       SEMANTIC_RELEASE_APP_ID: ${{ secrets.SEMANTIC_RELEASE_APP_ID }}

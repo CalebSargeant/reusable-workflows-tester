@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reusable-workflows-tester
+  labels:
+    app: reusable-workflows-tester
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reusable-workflows-tester
+  template:
+    metadata:
+      labels:
+        app: reusable-workflows-tester
+    spec:
+      containers:
+        - name: app
+          image: python:3.12-slim
+          ports:
+            - containerPort: 8000
+              name: http
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+
