@@ -1,0 +1,37 @@
+name: Build Container Image
+
+# This workflow is triggered when semantic-release creates a new release
+# It builds and pushes the Docker image with the release version tag
+
+on:
+  release:
+    types: [published]
+  pull_request:
+    branches:
+      - main
+      - staging
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to build (e.g., v1.0.0). If empty, defaults to latest tag.'
+        required: false
+        type: string
+      custom_tag:
+        description: 'Custom tag (e.g., feature-xyz, debug-latest). Overrides version input if specified.'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+  pull-requests: read
+
+jobs:
+  build:
+    uses: calebsargeant/reusable-workflows/.github/workflows/docker-ci.yaml@v1.1.5
+    with:
+      image_name: backend
+      platforms: linux/amd64
+      push: true
+    secrets: inherit

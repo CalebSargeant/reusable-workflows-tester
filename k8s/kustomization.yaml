@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: reusable-workflows-tester
+
+namespace: default
+
+resources:
+  - deployment.yaml
+  - service.yaml
+
+commonLabels:
+  app: reusable-workflows-tester
+  version: v1
+
+commonAnnotations:
+  managed-by: kustomize
+
