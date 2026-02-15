@@ -7,53 +7,6 @@ on:
       - staging
     paths:
       - 'k8s/**'
-  workflow_dispatch:
-    inputs:
-      runner:
-        description: 'The runner to use for the job'
-        required: false
-        default: 'ubuntu-latest'
-        type: string
-      k8s_directory:
-        description: 'Directory containing Kustomize files'
-        required: false
-        default: './k8s'
-        type: string
-      kustomize_version:
-        description: 'Kustomize version to use'
-        required: false
-        default: 'latest'
-        type: string
-      kubernetes_version:
-        description: 'Kubernetes version for validation (e.g., 1.32.0)'
-        required: false
-        default: '1.32.0'
-        type: string
-      skip_yamllint:
-        description: 'Skip YAML linting'
-        required: false
-        default: false
-        type: boolean
-      fail_on_yamllint:
-        description: 'Fail the workflow if yamllint finds issues'
-        required: false
-        default: false
-        type: boolean
-      skip_kubeconform:
-        description: 'Skip kubeconform validation'
-        required: false
-        default: false
-        type: boolean
-      skip_kubescore:
-        description: 'Skip kube-score validation'
-        required: false
-        default: false
-        type: boolean
-      strict_validation:
-        description: 'Enable strict validation in kubeconform'
-        required: false
-        default: true
-        type: boolean
 
 permissions:
   contents: read
@@ -62,15 +15,4 @@ permissions:
 jobs:
   kustomize-lint:
     name: Kustomize Lint
-    uses: calebsargeant/reusable-workflows/.github/workflows/kustomize-ci.yaml@v1.1.0
-    with:
-      runner: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.runner || 'ubuntu-latest' }}
-      k8s_directory: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.k8s_directory || './k8s' }}
-      kustomize_version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.kustomize_version || 'latest' }}
-      kubernetes_version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.kubernetes_version || '1.32.0' }}
-      skip_yamllint: ${{ github.event_name == 'workflow_dispatch' && fromJSON(github.event.inputs.skip_yamllint || 'false') || false }}
-      fail_on_yamllint: ${{ github.event_name == 'workflow_dispatch' && fromJSON(github.event.inputs.fail_on_yamllint || 'false') || false }}
-      skip_kubeconform: ${{ github.event_name == 'workflow_dispatch' && fromJSON(github.event.inputs.skip_kubeconform || 'false') || false }}
-      skip_kubescore: ${{ github.event_name == 'workflow_dispatch' && fromJSON(github.event.inputs.skip_kubescore || 'false') || false }}
-      strict_validation: ${{ github.event_name == 'workflow_dispatch' && fromJSON(github.event.inputs.strict_validation || 'true') || true }}
-
+    uses: calebsargeant/reusable-workflows/.github/workflows/kustomize-ci.yaml@v1.1.2
