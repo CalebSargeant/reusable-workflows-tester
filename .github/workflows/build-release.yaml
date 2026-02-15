@@ -26,6 +26,16 @@ on:
           - patch
           - minor
           - major
+      prerelease:
+        description: 'Create a pre-release'
+        required: false
+        default: false
+        type: boolean
+      prerelease_token:
+        description: 'Pre-release identifier (e.g., alpha, beta, rc)'
+        required: false
+        default: 'rc'
+        type: string
 
 permissions:
   contents: write
@@ -36,9 +46,13 @@ jobs:
   # Run semantic release
   semantic-release:
     name: Semantic Release
-    uses: calebsargeant/reusable-workflows/.github/workflows/semantic-release.yaml@v1.0.28
+    needs: [validate]
+    if: always() && (needs.validate.result == 'success' || needs.validate.result == 'skipped')
+    uses: calebsargeant/reusable-workflows/.github/workflows/semantic-release.yaml@v1.1.5
     with:
       bump: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.bump || '' }}
+      prerelease: ${{ github.event_name == 'workflow_dispatch' && fromJSON(github.event.inputs.prerelease || 'false') || false }}
+      prerelease_token: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.prerelease_token || 'rc' }}
       working_directory: '.'
     secrets:
       SEMANTIC_RELEASE_APP_ID: ${{ secrets.SEMANTIC_RELEASE_APP_ID }}

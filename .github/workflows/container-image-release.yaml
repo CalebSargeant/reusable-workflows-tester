@@ -1,4 +1,4 @@
-name: Build Container Image on Release
+name: Build Container Image
 
 # This workflow is triggered when semantic-release creates a new release
 # It builds and pushes the Docker image with the release version tag
@@ -9,6 +9,7 @@ on:
   pull_request:
     branches:
       - main
+      - staging
   workflow_dispatch:
     inputs:
       version:
@@ -28,7 +29,7 @@ permissions:
 
 jobs:
   build:
-    uses: calebsargeant/reusable-workflows/.github/workflows/docker-bake-ghcr.yaml@v1.0.28
+    uses: calebsargeant/reusable-workflows/.github/workflows/docker-ci.yaml@v1.1.5
     with:
       image_name: backend
       platforms: linux/amd64
