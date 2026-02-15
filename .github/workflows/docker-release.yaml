@@ -1,0 +1,23 @@
+name: Container Image Release
+
+# This workflow is triggered when semantic-release creates a new release
+# It builds and pushes the Docker image with the release version tag
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+  pull-requests: read
+
+jobs:
+  build:
+    uses: calebsargeant/reusable-workflows/.github/workflows/docker-release.yaml@v1.1.5
+    with:
+      image_name: backend
+      platforms: linux/amd64
+      push: true
+    secrets: inherit
