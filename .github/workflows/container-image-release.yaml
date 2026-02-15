@@ -29,7 +29,7 @@ permissions:
 
 jobs:
   build:
-    uses: calebsargeant/reusable-workflows/.github/workflows/docker-ci.yaml@v1.1.4
+    uses: calebsargeant/reusable-workflows/.github/workflows/docker-ci.yaml@v1.1.5
     with:
       image_name: backend
       platforms: linux/amd64
