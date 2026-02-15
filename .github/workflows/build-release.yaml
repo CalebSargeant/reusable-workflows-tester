@@ -48,7 +48,7 @@ jobs:
     name: Semantic Release
     needs: [validate]
     if: always() && (needs.validate.result == 'success' || needs.validate.result == 'skipped')
-    uses: calebsargeant/reusable-workflows/.github/workflows/semantic-release.yaml@v1.1.4
+    uses: calebsargeant/reusable-workflows/.github/workflows/semantic-release.yaml@v1.1.5
     with:
       bump: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.bump || '' }}
       prerelease: ${{ github.event_name == 'workflow_dispatch' && fromJSON(github.event.inputs.prerelease || 'false') || false }}
