@@ -15,4 +15,4 @@ permissions:
 jobs:
   kustomize-lint:
     name: Kustomize Lint
-    uses: calebsargeant/reusable-workflows/.github/workflows/kustomize-ci.yaml@v1.1.4
+    uses: calebsargeant/reusable-workflows/.github/workflows/kustomize-ci.yaml@v1.1.5
