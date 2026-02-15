@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.1 (2026-02-15)
+
+### Chores
+
+- **deps**: Bump python from 3.11-slim to 3.14-slim
+  ([`f05496b`](https://github.com/CalebSargeant/reusable-workflows-tester/commit/f05496bb5c8f0e89af54ae7612f31c37f3079e00))
+
+
 ## v1.1.0 (2026-02-15)
 
 ### Bug Fixes
