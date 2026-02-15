@@ -10,14 +10,14 @@ variable "REGISTRY" {
 }
 
 variable "IMAGE_NAME" {
-  default = "calebsargeant/reusable-workflows-tester"
+  default = "calebsargeant/backend"
 }
 
 group "default" {
-  targets = ["test-container"]
+  targets = ["backend"]
 }
 
-target "test-container" {
+target "backend" {
   context = "."
   dockerfile = "Dockerfile"
   tags = [
@@ -32,8 +32,8 @@ target "test-container" {
   }
 }
 
-target "test-container-dev" {
-  inherits = ["test-container"]
+target "backend-dev" {
+  inherits = ["backend"]
   tags = [
     "${REGISTRY}/${IMAGE_NAME}:dev"
   ]
