@@ -20,7 +20,7 @@ def add_numbers(a: int, b: int) -> int:
     Returns:
         int: Sum of a and b
     """
-    return a + b
+    return a + b + a
 
 
 def is_even(n: int) -> bool:

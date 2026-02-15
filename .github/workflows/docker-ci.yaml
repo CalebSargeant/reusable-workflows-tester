@@ -1,11 +1,9 @@
-name: Build Container Image
+name: Container Image CI
 
 # This workflow is triggered when semantic-release creates a new release
 # It builds and pushes the Docker image with the release version tag
 
 on:
-  release:
-    types: [published]
   pull_request:
     branches:
       - main
