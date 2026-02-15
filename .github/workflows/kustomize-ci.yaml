@@ -62,7 +62,7 @@ permissions:
 jobs:
   kustomize-lint:
     name: Kustomize Lint
-    uses: calebsargeant/reusable-workflows/.github/workflows/kustomize-ci.yaml@v1.0.28
+    uses: calebsargeant/reusable-workflows/.github/workflows/kustomize-ci.yaml@v1.1.0
     with:
       runner: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.runner || 'ubuntu-latest' }}
       k8s_directory: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.k8s_directory || './k8s' }}
