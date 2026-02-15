@@ -58,6 +58,10 @@ jobs:
             echo "❌ Error: main branch cannot create pre-releases"
             exit 1
           fi
+          if [ "${{ github.ref_name }}" != "main" ] && [ "${{ github.ref_name }}" != "staging" ]; then
+            echo "❌ Error: Releases can only be run from 'main' or 'staging' branches"
+            exit 1
+          fi
 
   # Run semantic release
   semantic-release:
