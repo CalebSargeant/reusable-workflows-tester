@@ -7,12 +7,12 @@ on:
       - staging
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pull-requests: read
+  security-events: write
+
 jobs:
   security-scan:
     name: Security Scan
     uses: calebsargeant/reusable-workflows/.github/workflows/security-scan.yaml@v1.2.1
-    permissions:
-      contents: read
-      pull-requests: read
-      security-events: write
-      
