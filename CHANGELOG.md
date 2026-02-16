@@ -2,6 +2,28 @@
 
 <!-- version list -->
 
+## v1.2.0 (2026-02-16)
+
+### Bug Fixes
+
+- Update .github/workflows/security-scan.yaml
+  ([`dbd7b89`](https://github.com/CalebSargeant/reusable-workflows-tester/commit/dbd7b897a7410f961e81fc06be76eb04240578fd))
+
+- Update permissions in lint-scan workflow
+  ([`841affd`](https://github.com/CalebSargeant/reusable-workflows-tester/commit/841affdd5cab431f52718e3bc10fbb474d9f1bf4))
+
+### Features
+
+- Add security scan workflow configuration
+  ([`34dba91`](https://github.com/CalebSargeant/reusable-workflows-tester/commit/34dba916848caa0133215e6d509867ce36923989))
+
+- Rename and update lint scan workflow configuration
+  ([`819e12d`](https://github.com/CalebSargeant/reusable-workflows-tester/commit/819e12d1696cb479f63b8d3ab9b4b9ed2bc3f5a2))
+
+- Update security scan workflow to version 1.2.1
+  ([`2898f5e`](https://github.com/CalebSargeant/reusable-workflows-tester/commit/2898f5e26934ab0cb160ef211e7113b69b30aad7))
+
+
 ## v1.1.2 (2026-02-15)
 
 
