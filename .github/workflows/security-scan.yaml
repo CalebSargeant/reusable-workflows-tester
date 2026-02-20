@@ -15,4 +15,4 @@ permissions:
 jobs:
   security-scan:
     name: Security Scan
-    uses: calebsargeant/reusable-workflows/.github/workflows/security-scan.yaml@v1.2.1
+    uses: calebsargeant/reusable-workflows/.github/workflows/security-scan.yaml@v1.9.2
