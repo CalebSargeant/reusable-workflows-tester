@@ -12,4 +12,4 @@ permissions:
 jobs:
   lint-scan:
     name: Lint Scan
-    uses: calebsargeant/reusable-workflows/.github/workflows/lint-scan.yaml@v1.3.0
+    uses: calebsargeant/reusable-workflows/.github/workflows/lint-scan.yaml@v1.9.2
