@@ -27,7 +27,7 @@ permissions:
 
 jobs:
   build:
-    uses: calebsargeant/reusable-workflows/.github/workflows/docker-ci.yaml@v1.1.5
+    uses: calebsargeant/reusable-workflows/.github/workflows/docker-ci.yaml@b451e5896adab046d2056f39db267765acfd1bdd # v1.16.0
     with:
       image_name: backend
       platforms: linux/amd64
